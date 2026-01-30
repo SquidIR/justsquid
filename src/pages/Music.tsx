@@ -4,6 +4,17 @@ import { Headphones, Music2 } from 'lucide-react';
 
 const MusicPage = () => {
   useEffect(() => {
+    // Scroll to top
+    window.scrollTo(0, 0);
+    
+    // Reset animations by removing the class
+    const revealElements = document.querySelectorAll('.reveal');
+    revealElements.forEach((el) => {
+      el.classList.remove('animate-slide-in-up');
+    });
+  }, []);
+
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

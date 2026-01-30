@@ -7,6 +7,17 @@ const Home = () => {
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Scroll to top
+    window.scrollTo(0, 0);
+    
+    // Reset animations by removing the class
+    const revealElements = document.querySelectorAll('.reveal');
+    revealElements.forEach((el) => {
+      el.classList.remove('animate-slide-in-up');
+    });
+  }, []);
+
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -41,7 +52,7 @@ const Home = () => {
           <img
             src={logo}
             alt="JustSquid Logo"
-            className="w-48 h-48 md:w-64 md:h-64 drop-shadow-2xl"
+            className="w-48 h-48 md:w-64 md:h-64 rounded-2xl drop-shadow-2xl"
           />
         </div>
 
@@ -58,7 +69,7 @@ const Home = () => {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 mb-16 animate-slide-in-up" style={{ animationDelay: '0.6s' }}>
           <a
-            href="https://youtube.com"
+            href="https://www.youtube.com/@ItsSquid534"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-hero flex items-center gap-3"
@@ -172,7 +183,7 @@ const Home = () => {
             Subscribe to JustSquid for the latest Geometry Dash content, original music, and more!
           </p>
           <a
-            href="https://youtube.com"
+            href="https://www.youtube.com/@ItsSquid534"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-hero inline-flex items-center gap-3 reveal opacity-0"

@@ -1,4 +1,5 @@
-import { Youtube, Music, Gamepad2 } from 'lucide-react';
+import { Youtube, Music, HelpCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import logo from '@/assets/logo.png';
 
 const Footer = () => {
@@ -8,7 +9,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Logo and tagline */}
           <div className="flex items-center gap-4">
-            <img src={logo} alt="JustSquid" className="w-12 h-12" />
+            <img src={logo} alt="JustSquid" className="w-12 h-12 rounded-md" />
             <div>
               <h3 className="font-heading font-bold text-lg">
                 JUST<span className="text-primary">SQUID</span>
@@ -22,25 +23,25 @@ const Footer = () => {
           {/* Social Icons */}
           <div className="flex items-center gap-6">
             <a
-              href="https://youtube.com"
+              href="https://www.youtube.com/@ItsSquid534"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 bg-secondary rounded-full text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
             >
               <Youtube size={20} />
             </a>
-            <a
-              href="#"
+            <Link
+              to="/music"
               className="p-3 bg-secondary rounded-full text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
             >
               <Music size={20} />
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/about"
               className="p-3 bg-secondary rounded-full text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
             >
-              <Gamepad2 size={20} />
-            </a>
+              <HelpCircle size={20} />
+            </Link>
           </div>
 
         </div>
