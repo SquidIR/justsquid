@@ -7,7 +7,7 @@ const Subscribers = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    // Calculate progress to September 16, 2026
+    // Calculate timer to September 16, 2026
     const startDate = new Date(2026, 0, 30); // January 30, 2026
     const endDate = new Date(2026, 8, 16); // September 16, 2026
     const today = new Date();
