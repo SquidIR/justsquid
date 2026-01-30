@@ -157,7 +157,7 @@ const Home = () => {
               <p className="text-muted-foreground text-sm uppercase tracking-wider">Creativity</p>
             </div>
             <div className="text-center reveal opacity-0" style={{ animationDelay: '0.1s' }}>
-              <div className="font-heading text-4xl md:text-5xl font-bold text-primary mb-2">24/7</div>
+              <div className="font-heading text-4xl md:text-5xl font-bold text-primary mb-2">24 / 7</div>
               <p className="text-muted-foreground text-sm uppercase tracking-wider">Dedication</p>
             </div>
             <div className="text-center reveal opacity-0" style={{ animationDelay: '0.2s' }}>

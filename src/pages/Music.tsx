@@ -67,8 +67,8 @@ const MusicPage = () => {
                 audioSrc="/music/make-your-day.m4a"
               />
               <p className="text-center text-muted-foreground mt-4">
-                This track is all about spreading positive vibes and good energy. 
-                I hope it brightens your day as much as making it brightened mine!
+                I literaly made this song before school ._. 
+                This is one of my best songs!
               </p>
             </div>
 
