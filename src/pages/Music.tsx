@@ -78,7 +78,7 @@ const MusicPage = () => {
                 audioSrc="/music/Grudges.mp3"
               />
               <p className="text-center text-muted-foreground mt-4">
-                A powerful track exploring emotions and personal growth through dynamic soundscapes.
+                Some random song I made for no particular reason. It's quite dark tbh
               </p>
             </div>
           </div>
