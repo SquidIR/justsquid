@@ -20,7 +20,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Social Icons forever */}
+          {/* Social Icons ALL */}
           <div className="flex items-center gap-6">
             <a
               href="https://www.youtube.com/@ItsSquid534"
