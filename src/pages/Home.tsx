@@ -108,7 +108,7 @@ const Home = () => {
               </div>
               <h3 className="font-heading text-xl text-center mb-4">Geometry Dash Shorts</h3>
               <p className="text-muted-foreground text-center text-sm">
-                I make short funny Geometry Dash videos of popular levels and epic fails!
+                I make short funny Geometry Dash videos of popular levels and glitches!
               </p>
             </div>
 
