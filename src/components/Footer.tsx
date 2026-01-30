@@ -43,10 +43,6 @@ const Footer = () => {
             </a>
           </div>
 
-          {/* Copyright */}
-          <p className="text-sm text-muted-foreground">
-            © 2025 JustSquid. All rights reserved.
-          </p>
         </div>
       </div>
     </footer>

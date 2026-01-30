@@ -12,7 +12,12 @@ const MusicPlayer = ({ title, audioSrc }: MusicPlayerProps) => {
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
+  const [audioLevels, setAudioLevels] = useState<number[]>(new Array(20).fill(20));
   const audioRef = useRef<HTMLAudioElement>(null);
+  const audioContextRef = useRef<AudioContext | null>(null);
+  const analyserRef = useRef<AnalyserNode | null>(null);
+  const sourceRef = useRef<MediaElementAudioSourceNode | null>(null);
+  const animationRef = useRef<number>(0);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -31,6 +36,7 @@ const MusicPlayer = ({ title, audioSrc }: MusicPlayerProps) => {
       setIsPlaying(false);
       setProgress(0);
       setCurrentTime(0);
+      setAudioLevels(new Array(20).fill(20));
     };
 
     audio.addEventListener('timeupdate', updateProgress);
@@ -41,8 +47,57 @@ const MusicPlayer = ({ title, audioSrc }: MusicPlayerProps) => {
       audio.removeEventListener('timeupdate', updateProgress);
       audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
       audio.removeEventListener('ended', handleEnded);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
     };
   }, []);
+
+  const initAudioContext = () => {
+    if (audioContextRef.current || !audioRef.current) return;
+
+    const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+    const analyser = audioContext.createAnalyser();
+    analyser.fftSize = 64;
+    
+    const source = audioContext.createMediaElementSource(audioRef.current);
+    source.connect(analyser);
+    analyser.connect(audioContext.destination);
+
+    audioContextRef.current = audioContext;
+    analyserRef.current = analyser;
+    sourceRef.current = source;
+  };
+
+  const updateVisualizer = () => {
+    if (!analyserRef.current || !isPlaying) return;
+
+    const dataArray = new Uint8Array(analyserRef.current.frequencyBinCount);
+    analyserRef.current.getByteFrequencyData(dataArray);
+
+    const levels = [];
+    const barCount = 20;
+    const step = Math.floor(dataArray.length / barCount);
+    
+    for (let i = 0; i < barCount; i++) {
+      const value = dataArray[i * step];
+      const height = Math.max(20, (value / 255) * 100);
+      levels.push(height);
+    }
+    
+    setAudioLevels(levels);
+    animationRef.current = requestAnimationFrame(updateVisualizer);
+  };
+
+  useEffect(() => {
+    if (isPlaying) {
+      updateVisualizer();
+    } else {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    }
+  }, [isPlaying]);
 
   const togglePlay = () => {
     const audio = audioRef.current;
@@ -51,6 +106,7 @@ const MusicPlayer = ({ title, audioSrc }: MusicPlayerProps) => {
     if (isPlaying) {
       audio.pause();
     } else {
+      initAudioContext();
       audio.play();
     }
     setIsPlaying(!isPlaying);
@@ -85,15 +141,12 @@ const MusicPlayer = ({ title, audioSrc }: MusicPlayerProps) => {
       
       {/* Visualizer bars */}
       <div className="flex items-end justify-center gap-1 h-24 mb-6">
-        {[...Array(20)].map((_, i) => (
+        {audioLevels.map((level, i) => (
           <div
             key={i}
-            className={`w-2 bg-primary rounded-t transition-all duration-150 ${
-              isPlaying ? 'music-bar' : ''
-            }`}
+            className="w-2 bg-primary rounded-t transition-all duration-75"
             style={{
-              height: isPlaying ? `${Math.random() * 80 + 20}%` : '20%',
-              animationDelay: `${i * 0.05}s`,
+              height: `${level}%`,
               opacity: isPlaying ? 1 : 0.3,
             }}
           />
