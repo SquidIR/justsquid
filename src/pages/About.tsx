@@ -145,9 +145,9 @@ const About = () => {
 
           <div className="space-y-6">
             {[
-              "My favorite Geometry Dash level changes every week – there's always something new to discover!",
+              "My favorite Geometry Dash level is Broken Gameplay by CloudEngineer – it's amazing!",
               "I've probably restarted levels thousands of times. Persistence is key!",
-              "Coffee is my secret weapon for those late-night music production sessions",
+              "Using my Akai Pro MPK Mini MK3 helps me make the best music!",
               "I believe every failed attempt is just practice for success",
               "The squid name? Let's just say I think squids are underrated cool 🦑"
             ].map((fact, index) => (

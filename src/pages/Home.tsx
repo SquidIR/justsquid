@@ -97,7 +97,7 @@ const Home = () => {
               </div>
               <h3 className="font-heading text-xl text-center mb-4">Geometry Dash Shorts</h3>
               <p className="text-muted-foreground text-center text-sm">
-                Quick, entertaining gameplay moments and epic fails from Geometry Dash
+                I make short funny Geometry Dash videos of popular levels and epic fails!
               </p>
             </div>
 
@@ -120,15 +120,17 @@ const Home = () => {
             <div className="card-geometric reveal opacity-0 hover:scale-105 transition-transform duration-300" style={{ animationDelay: '0.3s' }}>
               <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-6 mx-auto">
                 <svg className="w-8 h-8 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <rect x="2" y="6" width="20" height="12" rx="2" />
-                  <path d="M12 12h.01" />
-                  <path d="M17 12h.01" />
-                  <path d="M7 12h.01" />
+                  <circle cx="12" cy="12" r="10" />
+                  <circle cx="12" cy="12" r="3" />
+                  <line x1="12" y1="5" x2="12" y2="9" />
+                  <line x1="12" y1="15" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="9" y2="12" />
+                  <line x1="15" y1="12" x2="19" y2="12" />
                 </svg>
               </div>
-              <h3 className="font-heading text-xl text-center mb-4">Gaming Content</h3>
+              <h3 className="font-heading text-xl text-center mb-4">Drums</h3>
               <p className="text-muted-foreground text-center text-sm">
-                Entertaining gaming videos with commentary and unique challenges
+                I love playing drums! It helps me keep the rhythm and inspires my music production
               </p>
             </div>
           </div>
