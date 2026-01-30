@@ -44,6 +44,16 @@ const Footer = () => {
             </Link>
           </div>
 
+          {/* Contact */}
+          <div className="text-center md:text-right">
+            <p className="text-sm text-muted-foreground mb-2">Contact me:</p>
+            <a 
+              href="mailto:justsquid534@gmail.com"
+              className="text-primary hover:underline font-medium"
+            >
+              justsquid534@gmail.com
+            </a>
+          </div>
         </div>
       </div>
     </footer>

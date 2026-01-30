@@ -60,17 +60,28 @@ const MusicPage = () => {
             <h2 className="font-heading text-2xl font-bold">Featured Track</h2>
           </div>
 
-          <div className="reveal opacity-0">
-            <MusicPlayer
-              title="Make Your Day"
-              audioSrc="/music/make-your-day.m4a"
-            />
-          </div>
+          <div className="space-y-8">
+            <div className="reveal opacity-0">
+              <MusicPlayer
+                title="Make Your Day"
+                audioSrc="/music/make-your-day.m4a"
+              />
+              <p className="text-center text-muted-foreground mt-4">
+                This track is all about spreading positive vibes and good energy. 
+                I hope it brightens your day as much as making it brightened mine!
+              </p>
+            </div>
 
-          <p className="text-center text-muted-foreground mt-8 reveal opacity-0">
-            This track is all about spreading positive vibes and good energy. 
-            I hope it brightens your day as much as making it brightened mine!
-          </p>
+            <div className="reveal opacity-0">
+              <MusicPlayer
+                title="Grudges"
+                audioSrc="/music/Grudges.mp3"
+              />
+              <p className="text-center text-muted-foreground mt-4">
+                A powerful track exploring emotions and personal growth through dynamic soundscapes.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
